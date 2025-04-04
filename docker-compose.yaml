@@ -6,7 +6,7 @@ services:
     container_name: spark-docker-master
     environment:
       - SPARK_MODE=master
-      - SPARK_MASTER_HOST=spark-master
+      - SPARK_MASTER_HOST=spark-docker-master
     ports:
       - "8086:8080"
       - "7077:7077"
