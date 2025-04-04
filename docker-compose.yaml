@@ -1,9 +1,9 @@
 version: '3.7'
 
 services:
-  spark-master:
+  master:
     image: my-apache-spark:3.5.0.v1
-    container_name: spark-master
+    container_name: spark-docker-master
     environment:
       - SPARK_MODE=master
       - SPARK_MASTER_HOST=spark-master
@@ -16,14 +16,15 @@ services:
     volumes:
       - ./data:/data
 
-  spark-worker:
+  worker:
     image: my-apache-spark:3.5.0.v1
     environment:
       - SPARK_MODE=worker
-      - SPARK_MASTER=spark-master:7077
+      - SPARK_MASTER=spark-docker-master:7077
     networks:
       - spark-cluster-network
-    scale: 3
+    deploy:
+      replicas: 3
 
 networks:
   spark-cluster-network:
