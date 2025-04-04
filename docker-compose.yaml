@@ -23,8 +23,6 @@ services:
       - SPARK_MASTER=spark-docker-master:7077
     networks:
       - spark-cluster-network
-    deploy:
-      replicas: 3
 
 networks:
   spark-cluster-network:
